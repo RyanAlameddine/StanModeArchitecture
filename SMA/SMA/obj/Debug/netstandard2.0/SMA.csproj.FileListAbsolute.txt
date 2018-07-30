@@ -1,0 +1,9 @@
+C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMA\bin\Debug\netstandard2.0\SMA.deps.json
+C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMA\bin\Debug\netstandard2.0\SMA.dll
+C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMA\bin\Debug\netstandard2.0\SMA.pdb
+C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMA\obj\Debug\netstandard2.0\SMA.csprojAssemblyReference.cache
+C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMA\obj\Debug\netstandard2.0\SMA.csproj.CoreCompileInputs.cache
+C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMA\obj\Debug\netstandard2.0\SMA.AssemblyInfoInputs.cache
+C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMA\obj\Debug\netstandard2.0\SMA.AssemblyInfo.cs
+C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMA\obj\Debug\netstandard2.0\SMA.dll
+C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMA\obj\Debug\netstandard2.0\SMA.pdb

@@ -34,7 +34,7 @@ start:
             unld[00_07 r7] //set writeCharMod to 1
 
             tp  [start   ] //goto start
-        rpaper:
+        rpapr:
             eql [r3 r2 r8] //r3 = rand != paper
             tpZ [rscis r3] //if rand is not paper, goto rsciss
             unld[00_06 r5] //set writeChar to 'p'

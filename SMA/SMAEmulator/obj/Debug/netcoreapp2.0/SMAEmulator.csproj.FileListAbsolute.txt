@@ -1,0 +1,8 @@
+C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMAEmulator\bin\Debug\netcoreapp2.0\SMAEmulator.deps.json
+C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMAEmulator\bin\Debug\netcoreapp2.0\SMAEmulator.runtimeconfig.json
+C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMAEmulator\bin\Debug\netcoreapp2.0\SMAEmulator.runtimeconfig.dev.json
+C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMAEmulator\bin\Debug\netcoreapp2.0\SMAEmulator.dll
+C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMAEmulator\obj\Debug\netcoreapp2.0\SMAEmulator.csprojAssemblyReference.cache
+C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMAEmulator\obj\Debug\netcoreapp2.0\SMAEmulator.csproj.CoreCompileInputs.cache
+C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMAEmulator\obj\Debug\netcoreapp2.0\SMAEmulator.AssemblyInfoInputs.cache
+C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMAEmulator\obj\Debug\netcoreapp2.0\SMAEmulator.AssemblyInfo.cs
