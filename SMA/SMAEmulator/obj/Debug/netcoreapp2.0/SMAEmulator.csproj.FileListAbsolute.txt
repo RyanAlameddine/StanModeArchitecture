@@ -6,3 +6,9 @@ C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMAEmulator\obj\Debug\netcoreap
 C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMAEmulator\obj\Debug\netcoreapp2.0\SMAEmulator.csproj.CoreCompileInputs.cache
 C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMAEmulator\obj\Debug\netcoreapp2.0\SMAEmulator.AssemblyInfoInputs.cache
 C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMAEmulator\obj\Debug\netcoreapp2.0\SMAEmulator.AssemblyInfo.cs
+C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMAEmulator\bin\Debug\netcoreapp2.0\SMA.dll
+C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMAEmulator\bin\Debug\netcoreapp2.0\SMA.pdb
+C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMAEmulator\obj\Debug\netcoreapp2.0\SMAEmulator.csproj.CopyComplete
+C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMAEmulator\bin\Debug\netcoreapp2.0\SMAEmulator.pdb
+C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMAEmulator\obj\Debug\netcoreapp2.0\SMAEmulator.dll
+C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMAEmulator\obj\Debug\netcoreapp2.0\SMAEmulator.pdb

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SMAEmulator": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Users\\RyanAlameddine\\Documents\\GitHub\\ISA\\SMA\\SMAAssembler\\test.bin"
+    }
+  }
+}

@@ -2,7 +2,7 @@
   "profiles": {
     "SMAAssembler": {
       "commandName": "Project",
-      "commandLineArgs": "C:\\Users\\RyanAlameddine\\Documents\\GitHub\\ISA\\SMA\\SMAAssembler\\test.sma C:\\Users\\RyanAlameddine\\Documents\\GitHub\\ISA\\SMA\\SMAAssembler\\test.bin"
+      "commandLineArgs": "C:\\Users\\RyanAlameddine\\Documents\\GitHub\\ISA\\SMA\\SMAAssembler\\test.sma C:\\Users\\RyanAlameddine\\Documents\\GitHub\\ISA\\SMA\\SMAAssembler\\test.bin C:\\Users\\RyanAlameddine\\Documents\\GitHub\\ISA\\SMA\\SMAAssembler\\disassembled.sma"
     }
   }
 }

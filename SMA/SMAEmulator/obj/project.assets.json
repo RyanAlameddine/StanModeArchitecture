@@ -217,6 +217,16 @@
         "runtime": {
           "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
         }
+      },
+      "SMA/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/SMA.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SMA.dll": {}
+        }
       }
     }
   },
@@ -727,11 +737,17 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "SMA/1.0.0": {
+      "type": "project",
+      "path": "../SMA/SMA.csproj",
+      "msbuildProject": "../SMA/SMA.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
       "Microsoft.NETCore.App >= 2.0.0",
+      "SMA >= 1.0.0",
       "System.Memory >= 4.5.1"
     ]
   },
@@ -764,7 +780,11 @@
       },
       "frameworks": {
         "netcoreapp2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\RyanAlameddine\\Documents\\GitHub\\ISA\\SMA\\SMA\\SMA.csproj": {
+              "projectPath": "C:\\Users\\RyanAlameddine\\Documents\\GitHub\\ISA\\SMA\\SMA\\SMA.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

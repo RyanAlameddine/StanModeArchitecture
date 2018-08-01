@@ -8,7 +8,7 @@ namespace SMA
     {
         noOp = 0x0,
 
-        add  = 0x2,
+        add  = 0x1,
         sub,
         mult,
         div,
@@ -38,7 +38,10 @@ namespace SMA
         pop,
         peek,
         set,
-        mov
+        mov,
+        stPr,
 
+        call = 0x30,
+        ret
     }
 }

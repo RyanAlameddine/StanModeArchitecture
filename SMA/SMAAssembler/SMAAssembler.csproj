@@ -5,8 +5,23 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <LangVersion>7.3</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="System.Memory" Version="4.5.1" />
+  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\SMA\SMA.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="opCodes.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

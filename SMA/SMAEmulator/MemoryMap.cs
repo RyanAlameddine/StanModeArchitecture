@@ -33,5 +33,6 @@ namespace SMAEmulator
         }
 
         public ReadOnlySpan<byte> ProgramSpace => MemoryMarshal.AsBytes(memory.AsSpan().Slice(0x8000));
+        
     }
 }

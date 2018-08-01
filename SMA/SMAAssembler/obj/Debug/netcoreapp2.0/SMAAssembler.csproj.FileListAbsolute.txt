@@ -12,3 +12,4 @@ C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMAAssembler\obj\Debug\netcorea
 C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMAAssembler\obj\Debug\netcoreapp2.0\SMAAssembler.csproj.CopyComplete
 C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMAAssembler\obj\Debug\netcoreapp2.0\SMAAssembler.dll
 C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMAAssembler\obj\Debug\netcoreapp2.0\SMAAssembler.pdb
+C:\Users\RyanAlameddine\Documents\GitHub\ISA\SMA\SMAAssembler\bin\Debug\netcoreapp2.0\opCodes.json
