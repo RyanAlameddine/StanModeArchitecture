@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace SMAAssembler
 {
@@ -16,7 +17,6 @@ namespace SMAAssembler
         static void Main(string[] args)
         {
             string data = File.ReadAllText(args[0]);
-            
             #region assembler
             data = Regex.Replace(data, "\r", "\n");
             data = Regex.Replace(data, @"\n\ *\n", "\n");
@@ -89,7 +89,7 @@ namespace SMAAssembler
                 progMem = Regex.Replace(progMem, match.Value, "");
                 int endChar = match.Index - lOffset;
                 lOffset += match.Length;
-                for(int i = 0; i < endChar; i++)
+                for (int i = 0; i < endChar; i++)
                 {
                     if(progMem[i] == ' ' || progMem[i] == '\n')
                     {
@@ -104,6 +104,7 @@ namespace SMAAssembler
             foreach (OpCode opCode in Enum.GetValues(typeof(OpCode)))
             {
                 data = Regex.Replace(data, "^ *" + opCode.ToString() + "( *)\\[", ((int)opCode).ToString("X").PadLeft(2, '0') + '[', RegexOptions.Multiline);
+                
             }
             //data = Regex.Replace(data, @"\(.*\)", "");
             data = Regex.Replace(data, @"//.*", "");
@@ -123,13 +124,12 @@ namespace SMAAssembler
                 }
             }
 
-            data = data.Replace('r', '0');
+            data = data.Replace("[", ""); 
+            data = data.Replace("]", ""); 
+            data = data.Replace('r', '0'); 
             data = data.Replace("\n", "");
-            data = data.Replace("\r", "");
-
-            data = data.Replace("[", "");
-            data = data.Replace("]", "");
-
+            data = data.Replace("\r", ""); 
+            
             bytes = new byte[data.Length / 2];
             for(int i = 0; i < data.Length; )
             {

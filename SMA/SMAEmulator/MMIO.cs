@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace SMAEmulator
 {
@@ -23,6 +24,21 @@ namespace SMAEmulator
             {
                 map[7] = 0;
                 Console.Write((char)map[6]);
+            }
+            if(map[8] == 1)
+            {
+                Console.Clear();
+                int i = 0;
+                for(int x = 0; x < 10; x++)
+                {
+                    for(int y = 0; y < 10; y++)
+                    {
+                        Console.Write((char)map[i + 9]);
+                        i++;
+                    }
+                    Console.WriteLine();
+                }
+                Thread.Sleep(50);
             }
         }
     }
