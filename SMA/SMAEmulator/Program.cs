@@ -1,6 +1,7 @@
 ﻿using SMA;
 using System;
 using System.IO;
+using System.Threading;
 
 namespace SMAEmulator
 {
@@ -9,26 +10,34 @@ namespace SMAEmulator
         static MemoryMap memMap;
         static Registers r;
         static Random rand = new Random();
+        static MMIO mmio;
 
         static void Main(string[] args)
         {
-            memMap = new MemoryMap(File.ReadAllBytes(args[0]));
-            r = new Registers();
-
-            MMIO.Update(memMap, rand);
-
-            //SP
-            r[254] = 0x7FFF;
-            //IP
-            r[253] = 0x8000;
-
-            while(memMap[0] == 0)
+            ConsoleKeyInfo key;
+            do
             {
-                string opCode = Enum.GetName(typeof(OpCode), memMap.ProgramSpace.Slice((r[253] - 0x8000) * 2, 4)[0]) + ": " + ((r[253] - 0x8000)/2);
-                Execute();
-                MMIO.Update(memMap, rand);
-            }
-            Console.ReadKey();
+                memMap = new MemoryMap(File.ReadAllBytes(args[0]));
+                mmio = new MMIO(memMap);
+                r = new Registers();
+
+                mmio.Update(memMap, rand);
+
+                //SP
+                r[254] = 0x7FFF;
+
+                //IP
+                r[253] = 0x8000;
+
+                while (memMap[0] == 0)
+                {
+                    string opCode = Enum.GetName(typeof(OpCode), memMap.ProgramSpace.Slice((r[253] - 0x8000) * 2, 4)[0]) + ": " + ((r[253] - 0x8000) / 2);
+                    Execute();
+                    
+                    mmio.Update(memMap, rand);
+                }
+                key = Console.ReadKey();
+            } while (key.Key == ConsoleKey.Tab);
         }
 
         static void Execute()
@@ -134,15 +143,31 @@ namespace SMAEmulator
                     r[p[2]] = r[p[3]];
                     break;
                 case OpCode.call:
-                    memMap[r[254]] = (ushort) (r[253] + 2);
+                    memMap[r[254]] = (ushort) (r[253]);
                     r[254]--;
+                    r[253] = (ushort)(ushort.Parse(p[2].ToString("X") + p[3].ToString("X").PadLeft(2, '0'), System.Globalization.NumberStyles.HexNumber) * 2 + 0x8000 - 2);
+                    r[253] -= 2;
                     break;
                 case OpCode.ret:
                     r[254]++;
-                    ushort returnAddr = memMap[r[254]];
+                    ushort returnAddr = (ushort) (memMap[r[254]]);
                     r[253] = returnAddr;
-                    r[253] += 2;
+                    //r[253] += 2;
                     break;
+                case OpCode.wait:
+                    Thread.Sleep((ushort)(ushort.Parse(p[2].ToString("X") + p[3].ToString("X").PadLeft(2, '0'), System.Globalization.NumberStyles.HexNumber) * 0x100));
+                    break;
+                case OpCode.stPr:
+                    r[p[1]] = (ushort)(ushort.Parse(p[2].ToString("X") + p[3].ToString("X").PadLeft(2, '0'), System.Globalization.NumberStyles.HexNumber) - 1 + 0x8000);
+                    break;
+                case OpCode.uldI:
+                    memMap[r[p[2]]] = r[p[3]];
+                    break;
+                case OpCode.ldI:
+                    r[p[2]] = memMap[r[p[3]]];
+                    break;
+                default:
+                    throw new NullReferenceException("Invalid opCode!!!");
             }
             r[253] += 2;
         }

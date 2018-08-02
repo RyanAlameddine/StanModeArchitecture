@@ -22,6 +22,10 @@ namespace SMAEmulator
         {
             get
             {
+                if(index == 0x7fff)
+                {
+                    ;
+                }
                 return ref memory[index];
             }
         }

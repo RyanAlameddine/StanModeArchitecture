@@ -42,6 +42,10 @@ namespace SMA
         stPr,
 
         call = 0x30,
-        ret
+        ret,
+        wait,
+
+        ldI = 0x40,
+        uldI
     }
 }

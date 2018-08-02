@@ -75,14 +75,20 @@ namespace SMAAssembler
             #endregion progMem
 
             MatchCollection labels = Regex.Matches(data, ".*:");
+            Dictionary<string, string> lbls = new Dictionary<string, string>();
             foreach (Match match in labels)
             {
-                data = data.Replace(match.Value, "00[00 00 00]");
-                data = Regex.Replace(data, @"(?<=(\[| ))" + match.Value.Remove(match.Value.Length - 1).Replace(" ", "") + @"(?=(\]| ))", (data.Take(match.Index).Count(c => c == '\n') + 1).ToString("X").PadLeft(4, '0'));
+                lbls.Add(match.Value, (data.Take(match.Index).Count(c => c == '\n') + 1).ToString("X").PadLeft(4, '0'));
+            }
+            foreach(Match match in labels)
+            {
+                data = Regex.Replace(data, @"(?<=(\[| ))" + match.Value.Remove(match.Value.Length - 1).Replace(" ", "") + @"(?=(\]| ))", lbls[match.Value]);
+                data = data.Replace(match.Value, "noOp[        ] ");
             }
 
             MatchCollection progLabels = Regex.Matches(progMem, ".*: ");
             int lOffset = 0;
+            int dataLineCount = data.Take(data.Length).Count(c => c == '\n');
             foreach (Match match in progLabels)
             {
                 int shortCount = 0;
@@ -97,9 +103,23 @@ namespace SMAAssembler
                     }
                 }
                 string text = data;
-                data = Regex.Replace(data, @"(?<=(\[| ))" + match.Value.Remove(match.Value.Length - 2).Replace(" ", "") + @"(?=(\]| ))", shortCount.ToString("X").PadLeft(4, '0'));
+                data = Regex.Replace(data, @"(?<=(\[| ))" + match.Value.Remove(match.Value.Length - 2).Replace(" ", "") + @"(?=(\]| ))", (shortCount + dataLineCount*2 + 1).ToString("X").PadLeft(4, '0'));
             }
+
+            MatchCollection progEndian = Regex.Matches(progMem, "[0-9A-F]{4}");
+            foreach (Match match in progEndian)
+            {
+                string start = match.Value.Substring(2);
+                start += match.Value.Substring(0, 2);
+                var aStringBuilder = new StringBuilder(progMem);
+                aStringBuilder.Remove(match.Index, 4);
+                aStringBuilder.Insert(match.Index, start);
+                progMem = aStringBuilder.ToString();
+            }
+
             data += progMem;
+
+
 
             foreach (OpCode opCode in Enum.GetValues(typeof(OpCode)))
             {
