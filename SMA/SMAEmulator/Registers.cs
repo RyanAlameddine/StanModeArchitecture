@@ -8,11 +8,15 @@ namespace SMAEmulator
     {
         private ushort[] registers = new ushort[255];
 
-        public ref ushort this[int index]
+        public ushort this[int index]
         {
             get
             {
-                return ref registers[index];
+                return registers[index];
+            }
+            set
+            {
+                registers[index] = value;
             }
         }
     }

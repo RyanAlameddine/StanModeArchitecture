@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 using System.Threading;
 
@@ -7,47 +8,17 @@ namespace SMAEmulator
 {
     class MMIO
     {
-        Thread thread;
+        Graphics g;
+        Bitmap bitmap = new Bitmap(20, 20);
 
         public MMIO(MemoryMap map)
         {
-            thread = new Thread(() =>
-            {
-                Console.WriteLine("Loaded");
-                while (true)
-                {
-                    if (map[8] == 1)
-                    {
-                        Console.Clear();
-
-                        int i = 0;
-                        for (int x = 0; x < 20; x++)
-                        {
-                            for (int y = 0; y < 20; y++)
-                            {
-                                int index = map[i + 9];
-                                while (index > 15)
-                                {
-                                    index -= 16;
-                                }
-                                Console.BackgroundColor = (ConsoleColor)index;
-                                Console.Write("  ");
-                                i++;
-                            }
-                            Console.WriteLine();
-                            
-                        }
-                        Thread.Sleep(20);
-                        Console.BackgroundColor = ConsoleColor.Black;
-                        map[8] = 0;
-
-                    }
-                }
-            });
-            thread.IsBackground = true;
-            thread.Start();
+            g = Graphics.FromHwnd(Screen.GetConsoleWindow());
+            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+            g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.None;
         }
 
+        public object BitMap { get; }
 
         public void Update(MemoryMap map, Random rand)
         {
@@ -66,6 +37,24 @@ namespace SMAEmulator
             {
                 map[7] = 0;
                 Console.Write((char)map[6]);
+            }
+            if (map[8] == 1)
+            {
+
+                int i = 0;
+                for (int x = 0; x < bitmap.Width; x++)
+                {
+                    for (int y = 0; y < bitmap.Height; y++)
+                    {
+                        int val = (int)(map[i + 9]);
+                        val -= 256 * (val / 256);
+                        bitmap.SetPixel(y, x, Color.FromArgb(255, 255, val, 255));
+                        i++;
+                    }
+
+                }
+                Screen.DrawImage(g, bitmap, new Point(1, 1), new Size(20, 20));
+                map[8] = 0;
             }
         }
     }

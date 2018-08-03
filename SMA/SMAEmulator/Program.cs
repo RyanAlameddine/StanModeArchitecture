@@ -22,7 +22,7 @@ namespace SMAEmulator
                 r = new Registers();
 
                 mmio.Update(memMap, rand);
-
+                
                 //SP
                 r[254] = 0x7FFF;
 
@@ -33,7 +33,10 @@ namespace SMAEmulator
                 {
                     string opCode = Enum.GetName(typeof(OpCode), memMap.ProgramSpace.Slice((r[253] - 0x8000) * 2, 4)[0]) + ": " + ((r[253] - 0x8000) / 2);
                     Execute();
-                    
+                    if(opCode == "add: 9")
+                    {
+                        ;
+                    }
                     mmio.Update(memMap, rand);
                 }
                 key = Console.ReadKey();
@@ -155,7 +158,7 @@ namespace SMAEmulator
                     //r[253] += 2;
                     break;
                 case OpCode.wait:
-                    Thread.Sleep((ushort)(ushort.Parse(p[2].ToString("X") + p[3].ToString("X").PadLeft(2, '0'), System.Globalization.NumberStyles.HexNumber) * 0x100));
+                    Thread.Sleep((ushort)(ushort.Parse(p[2].ToString("X") + p[3].ToString("X").PadLeft(2, '0'), System.Globalization.NumberStyles.HexNumber) * 10));
                     break;
                 case OpCode.stPr:
                     r[p[1]] = (ushort)(ushort.Parse(p[2].ToString("X") + p[3].ToString("X").PadLeft(2, '0'), System.Globalization.NumberStyles.HexNumber) - 1 + 0x8000);

@@ -168,7 +168,7 @@ namespace SMAAssembler
             for(int i = 0; i < bytesToDisassemble.Length/2; i+=2)
             {
                 Span<byte> paramSpan = bytesToDisassemble;
-                if (paramSpan[i * 2] == 0xFF && paramSpan[i * 2 + 1] == 0xFF && paramSpan[i * 2 + 2] == 0xFF && paramSpan[i * 2 + 3] == 0xFF)
+                if (!progMemActive && paramSpan[i * 2] == 0xFF && paramSpan[i * 2 + 1] == 0xFF && paramSpan[i * 2 + 2] == 0xFF && paramSpan[i * 2 + 3] == 0xFF)
                 {
                     progMemActive = true;
                     sb.Append("$---$\n");
